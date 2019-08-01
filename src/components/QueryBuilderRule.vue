@@ -4,11 +4,11 @@
       <label>{{ rule.label }}</label>
 
       <select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand" :class="{ 'form-control': styled }">
-        <option v-for="operand in rule.operands">{{ operand }}</option>
+        <option v-for="(operand, index) in rule.operands" :key="index">{{ operand }}</option>
       </select>
 
       <select v-if="typeof rule.operators !== 'undefined' && rule.operators.length > 1" v-model="query.selectedOperator" :class="{ 'form-control': styled }">
-        <option v-for="operator in rule.operators" v-bind:value="operator">
+        <option v-for="(operator, index) in rule.operators" :key="index" v-bind:value="operator">
           {{ operator }}
         </option>
       </select>
@@ -22,13 +22,13 @@
       </template>
 
       <div class="checkbox" v-if="rule.inputType === 'checkbox'">
-        <label v-for="choice in rule.choices">
+        <label v-for="(choice, index) in rule.choices" :key="index">
           <input type="checkbox" :value="choice.value" v-model="query.value"> {{ choice.label }}
         </label>
       </div>
 
       <div class="radio" v-if="rule.inputType === 'radio'">
-        <label v-for="choice in rule.choices">
+        <label v-for="(choice, index) in rule.choices" :key="index" >
           <input type="radio" :value="choice.value" v-model="query.value"> {{ choice.label }}
         </label>
       </div>
@@ -40,11 +40,11 @@
         v-model="query.value">
 
         <template v-for="(option, option_key) in selectOptions">
-          <option v-if="!Array.isArray(option)" :value="option.value">
+          <option v-if="!Array.isArray(option)" :value="option.value" :key="option_key">
             {{ option.label }}
           </option>
-          <optgroup v-if="Array.isArray(option)" :label="option_key">
-            <option v-for="sub_option in option" :value="sub_option.value">{{ sub_option.label }}</option>
+          <optgroup v-if="Array.isArray(option)" :label="option_key" :key="option_key">
+            <option v-for="(sub_option, index) in option" :key="index" :value="sub_option.value">{{ sub_option.label }}</option>
           </optgroup>
         </template>
 
