@@ -1,11 +1,16 @@
 <template>
   <div class="vqb-group" :class="classObject">
+
+    <!-- This needs to become the "and/or" tree junction -->
     <div class="vqb-group-heading" :class="{ 'panel-heading': styled }">
       <div class="match-type-container" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
           <label for="vqb-match-type">{{ labels.matchType }}</label>
           <select id="vqb-match-type" :class="{ 'form-control': styled }" v-model="query.logicalOperator">
-            <option v-for="(label, index) in labels.matchTypes" :key="index" :value="label.id">{{ label.label }}</option>
+            <option v-for="(label, index) in labels.matchTypes"
+              :key="index"
+              :value="label.id"
+            >{{ label.label }}</option>
           </select>
         </div>
         <button type="button"
@@ -20,10 +25,15 @@
       <div class="rule-actions" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
 
+          <!-- Need to create a "type" dropdown that will filter labels (a.k.a attributes) -->
           <select v-model="selectedRule" :class="{ 'form-control': styled }">
-            <option v-for="(rule, index) in rules" :key="index" :value="rule">{{ rule.label }}</option>
+            <option v-for="(rule, index) in rules"
+              :key="index"
+              :value="rule"
+            >{{ rule.label }}</option>
           </select>
 
+          <!-- This will have to be generalized and moved to the bottom  -->
           <button type="button"
             @click="addRule"
             :class="{ 'btn btn-default': styled }"
