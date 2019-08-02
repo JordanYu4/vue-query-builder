@@ -160,4 +160,4 @@ export default {
 }
 </script>
 
-<style module src="./VueQueryBuilder.scss" lang="scss"></style>
+<style src="./VueQueryBuilder.scss" lang="scss"></style>
