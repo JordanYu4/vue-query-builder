@@ -5,7 +5,6 @@
     <div class="vqb-group-heading" :class="{ 'panel-heading': styled }">
       <div class="match-type-container" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
-          <label for="vqb-match-type">{{ labels.matchType }}</label>
           <select id="vqb-match-type" :class="{ 'form-control': styled }" v-model="query.logicalOperator">
             <option v-for="(label, index) in labels.matchTypes"
               :key="index"

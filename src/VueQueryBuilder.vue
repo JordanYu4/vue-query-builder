@@ -19,7 +19,6 @@ import QueryBuilderGroup from './components/QueryBuilderGroup.vue';
 import deepClone from './utilities.js';
 
 var defaultLabels = {
-  matchType: "Match Type",
   matchTypes: [
     {"id": "and", "label": "and"},
     {"id": "or", "label": "or"},
