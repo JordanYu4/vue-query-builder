@@ -32,16 +32,6 @@
             >{{ rule.label }}</option>
           </select>
 
-          <!-- This will have to be generalized and moved to the bottom  -->
-          <button type="button"
-            @click="addRule"
-            :class="{ 'btn btn-default': styled }"
-            v-html="labels.addRule"></button>
-          <button type="button"
-            :class="{ 'btn btn-default': styled }"
-            v-if="this.depth < this.maxDepth"
-            @click="addGroup"
-            v-html="labels.addGroup"></button>
         </div>
       </div>
 
@@ -64,6 +54,18 @@
         </component>
       </div>
     </div>
+
+    <div :class="{ 'form-group': styled}">
+      <button type="button"
+        @click="addRule"
+        :class="{ 'btn btn-default': styled }"
+        v-html="labels.addRule"></button>
+      <button type="button"
+        :class="{ 'btn btn-default': styled }"
+        v-if="this.depth < this.maxDepth"
+        @click="addGroup"
+        v-html="labels.addGroup"></button>
+    </div>    
   </div>
 </template>
 
