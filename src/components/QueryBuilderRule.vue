@@ -1,6 +1,16 @@
 <template>
   <div class="vqb-rule" :class="{ 'panel panel-default form-inline': styled }">
     <div :class="{ 'form-group': styled }">
+
+      <!-- Need to make this a "type" dropdown that will filter labels (a.k.a attributes) -->
+      <label for="selected-rule">Type</label>
+      <select v-model="selectedRule" :class="{ 'form-control': styled }">
+        <option v-for="(rule, index) in rules"
+          :key="index"
+          :value="rule"
+        >{{ rule.label }}</option>
+      </select>
+
       <label>{{ rule.label }}</label>
 
       <select v-if="typeof rule.operands !== 'undefined'" v-model="query.selectedOperand" :class="{ 'form-control': styled }">
@@ -61,11 +71,17 @@ import deepClone from '../utilities.js';
 export default {
   name: "query-builder-rule",
 
-  props: ['query', 'index', 'rule', 'styled', 'labels'],
+  props: ['query', 'index', 'rules', 'rule', 'styled', 'labels'],
 
   beforeMount () {
     if (this.rule.type === 'custom-component') {
       this.$options.components[this.id] = this.rule.component;
+    }
+  },
+
+  data() {
+    return {
+      selectedRule: this.rules[0]
     }
   },
 

@@ -21,10 +21,10 @@
     </div>
 
     <div class="vqb-group-body" :class="{ 'panel-body': styled }">
-      <div class="rule-actions" :class="{ 'form-inline': styled }">
+      <!-- <div class="rule-actions" :class="{ 'form-inline': styled }">
         <div :class="{ 'form-group': styled }">
 
-          <!-- Need to create a "type" dropdown that will filter labels (a.k.a attributes) -->
+          <label for="selected-rule">Type</label>
           <select v-model="selectedRule" :class="{ 'form-control': styled }">
             <option v-for="(rule, index) in rules"
               :key="index"
@@ -33,9 +33,9 @@
           </select>
 
         </div>
-      </div>
+      </div> -->
 
-      <div class="children">
+      <div class="vqb-children">
         <component
           v-for="(child, index) in query.children"
           :key="index"
@@ -44,7 +44,7 @@
           :query.sync="child.query"
           :ruleTypes="ruleTypes"
           :rules="rules"
-          :rule="ruleById(child.query.rule)"
+          :rule="ruleById(child.query.ruleId)"
           :index="index"
           :maxDepth="maxDepth"
           :depth="depth + 1"
@@ -101,14 +101,14 @@ export default {
       let child = {
         type: 'query-builder-rule',
         query: {
-          rule: this.selectedRule.id,
+          ruleId: this.selectedRule.id,
           selectedOperator: this.selectedRule.operators[0],
           selectedOperand: typeof this.selectedRule.operands === "undefined" ? this.selectedRule.label : this.selectedRule.operands[0],
           value: null
         }
       };
       // A bit hacky, but `v-model` on `select` requires an array.
-      if (this.ruleById(child.query.rule).type === 'multi-select') {
+      if (this.ruleById(child.query.ruleId).type === 'multi-select') {
         child.query.value = [];
       }
       updated_query.children.push(child);
