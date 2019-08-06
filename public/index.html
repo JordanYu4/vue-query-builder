@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Vue Query Builder</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+      html, body {
+        background: #F5F5F5;
+      }
+
+      pre {
+        background: #ffffff;
+        overflow-x: auto;
+        box-shadow: 0 5.125rem 2.5625rem -4.9375rem rgba(0, 0, 0, 0.21);
+        margin: 0 3rem 0;
+      }
+
+      #app {
+        margin-top: 5rem;
+        margin-left: 3rem;
+        margin-right: 3rem;
+      }
+    </style>
   </head>
   <body>
     <noscript>
@@ -15,8 +33,7 @@
     <div id="app">
       <vue-query-builder :rules="rules" v-model="output"></vue-query-builder>
 
-      --
-
+      <br /><br />
       <pre>{{ outputFormatted }}</pre>
     </div>
     <!-- built files will be auto injected -->

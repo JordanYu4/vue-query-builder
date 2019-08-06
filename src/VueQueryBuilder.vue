@@ -1,16 +1,18 @@
 <template>
-  <div class="vue-query-builder" :class="{ 'vue-query-builder-styled': styled }">
-    <query-builder-group
-      :index="0"
-      :query.sync="query"
-      :ruleTypes="ruleTypes"
-      :rules="mergedRules"
-      :maxDepth="maxDepth"
-      :depth="depth"
-      :styled="styled"
-      :labels="mergedLabels"
-      type="query-builder-group"
-      ></query-builder-group>
+  <div class="vue-query-builder-container">
+    <div class="vue-query-builder" :class="{ 'vue-query-builder-styled': styled }">
+      <query-builder-group
+        :index="0"
+        :query.sync="query"
+        :ruleTypes="ruleTypes"
+        :rules="mergedRules"
+        :maxDepth="maxDepth"
+        :depth="depth"
+        :styled="styled"
+        :labels="mergedLabels"
+        type="query-builder-group"
+        ></query-builder-group>
+    </div>
   </div>
 </template>
 
@@ -25,7 +27,7 @@ var defaultLabels = {
   ],
   addRule: "Add Rule",
   removeRule: "&times;",
-  addGroup: "Add Group",
+  addGroup: "Add Rule Group",
   removeGroup: "&times;",
   textInputPlaceholder: "value",
 };
