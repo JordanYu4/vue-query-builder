@@ -21,8 +21,8 @@ import deepClone from './utilities.js';
 var defaultLabels = {
   matchType: "Match Type",
   matchTypes: [
-    {"id": "all", "label": "All"},
-    {"id": "any", "label": "Any"},
+    {"id": "and", "label": "and"},
+    {"id": "or", "label": "or"},
   ],
   addRule: "Add Rule",
   removeRule: "&times;",
